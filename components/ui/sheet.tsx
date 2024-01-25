@@ -13,12 +13,16 @@ const SheetTrigger = SheetPrimitive.Trigger
 
 const SheetClose = SheetPrimitive.Close
 
-const SheetPortal = ({
-  className,
-  ...props
-}: SheetPrimitive.DialogPortalProps) => (
-  <SheetPrimitive.Portal className={cn(className)} {...props} />
-)
+
+
+const SheetPortal: React.FC<
+  React.HTMLAttributes<HTMLDivElement> & SheetPrimitive.DialogPortalProps
+> = ({ className, ...props }) => (
+  <SheetPrimitive.Portal {...props}>
+    <div className={cn(className)} />
+  </SheetPrimitive.Portal>
+);
+
 SheetPortal.displayName = SheetPrimitive.Portal.displayName
 
 const SheetOverlay = React.forwardRef<
